@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:protfolio/core/theme/app_theme.dart';
 import '../../domain/models/window_model.dart';
 import '../providers/window_provider.dart';
@@ -30,64 +32,108 @@ class Taskbar extends ConsumerWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Placeholder icons for now
+              // Social Links Section
+              _TaskbarIcon(
+                icon: FontAwesomeIcons.instagram,
+                label: 'Instagram',
+                color: const Color(0xFFE1306C),
+                onTap: () => _launchURL('https://instagram.com/yourusername'),
+              ),
+              const SizedBox(width: 12),
+              _TaskbarIcon(
+                icon: FontAwesomeIcons.linkedin,
+                label: 'LinkedIn',
+                color: const Color(0xFF0077B5),
+                onTap: () => _launchURL('https://linkedin.com/in/yourusername'),
+              ),
+              const SizedBox(width: 12),
+              _TaskbarIcon(
+                icon: FontAwesomeIcons.envelope,
+                label: 'Email',
+                color: const Color(0xFFEA4335),
+                onTap: () => _launchURL('mailto:your.email@example.com'),
+              ),
+              const SizedBox(width: 12),
+              _TaskbarIcon(
+                icon: FontAwesomeIcons.briefcase,
+                label: 'Hire Me',
+                color: const Color(0xFF00FF87),
+                onTap: () => _launchURL('https://yourwebsite.com/hire'),
+              ),
+              const SizedBox(width: 16),
+              Container(
+                width: 1,
+                height: 40,
+                color: Colors.white.withOpacity(0.2),
+              ),
+              const SizedBox(width: 16),
+
+              // App Icons
               _TaskbarIcon(
                 icon: Icons.terminal,
                 label: 'Terminal',
                 onTap: () {
-                  ref.read(windowProvider.notifier).addWindow(
-                    WindowModel(
-                      id: 'terminal',
-                      title: 'Terminal',
-                      content: const TerminalScreen(),
-                      size: const Size(700, 500),
-                    ),
-                  );
+                  ref
+                      .read(windowProvider.notifier)
+                      .addWindow(
+                        WindowModel(
+                          id: 'terminal',
+                          title: 'Terminal',
+                          content: const TerminalScreen(),
+                          size: const Size(700, 500),
+                        ),
+                      );
                 },
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: 12),
               _TaskbarIcon(
                 icon: Icons.store,
                 label: 'App Store',
                 onTap: () {
-                  ref.read(windowProvider.notifier).addWindow(
-                    WindowModel(
-                      id: 'store',
-                      title: 'App Store',
-                      content: const StoreScreen(),
-                      size: const Size(900, 600),
-                    ),
-                  );
+                  ref
+                      .read(windowProvider.notifier)
+                      .addWindow(
+                        WindowModel(
+                          id: 'store',
+                          title: 'App Store',
+                          content: const StoreScreen(),
+                          size: const Size(900, 600),
+                        ),
+                      );
                 },
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: 12),
               _TaskbarIcon(
                 icon: Icons.monitor_heart,
                 label: 'System',
                 onTap: () {
-                  ref.read(windowProvider.notifier).addWindow(
-                    WindowModel(
-                      id: 'monitor',
-                      title: 'System Monitor',
-                      content: const MonitorScreen(),
-                      size: const Size(600, 400),
-                    ),
-                  );
+                  ref
+                      .read(windowProvider.notifier)
+                      .addWindow(
+                        WindowModel(
+                          id: 'monitor',
+                          title: 'System Monitor',
+                          content: const MonitorScreen(),
+                          size: const Size(600, 400),
+                        ),
+                      );
                 },
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: 12),
               _TaskbarIcon(
                 icon: Icons.settings,
                 label: 'Settings',
                 onTap: () {
-                  ref.read(windowProvider.notifier).addWindow(
-                    WindowModel(
-                      id: 'settings',
-                      title: 'Settings',
-                      content: const SettingsScreen(),
-                      size: const Size(500, 400),
-                    ),
-                  );
+                  ref
+                      .read(windowProvider.notifier)
+                      .addWindow(
+                        WindowModel(
+                          id: 'settings',
+                          title: 'Settings',
+                          content: const SettingsScreen(),
+                          size: const Size(500, 400),
+                        ),
+                      );
                 },
               ),
               const SizedBox(width: 16),
@@ -113,14 +159,27 @@ class Taskbar extends ConsumerWidget {
       ),
     );
   }
+
+  Future<void> _launchURL(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
 }
 
 class _TaskbarIcon extends StatefulWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
+  final Color? color;
 
-  const _TaskbarIcon({required this.icon, required this.label, required this.onTap});
+  const _TaskbarIcon({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+    this.color,
+  });
 
   @override
   State<_TaskbarIcon> createState() => _TaskbarIconState();
@@ -140,14 +199,24 @@ class _TaskbarIconState extends State<_TaskbarIcon> {
           duration: const Duration(milliseconds: 200),
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: _isHovered ? AppTheme.accent.withOpacity(0.2) : Colors.transparent,
+            color: _isHovered
+                ? (widget.color ?? AppTheme.accent).withOpacity(0.2)
+                : Colors.transparent,
             borderRadius: BorderRadius.circular(12),
-            border: _isHovered ? Border.all(color: AppTheme.accent) : Border.all(color: Colors.transparent),
+            border: _isHovered
+                ? Border.all(color: widget.color ?? AppTheme.accent)
+                : Border.all(color: Colors.transparent),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(widget.icon, color: _isHovered ? AppTheme.accent : Colors.white, size: 24),
+              Icon(
+                widget.icon,
+                color: _isHovered
+                    ? (widget.color ?? AppTheme.accent)
+                    : Colors.white,
+                size: 24,
+              ),
             ],
           ),
         ),

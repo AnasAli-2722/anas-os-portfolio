@@ -9,6 +9,7 @@ class OSLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        // Use 800px as breakpoint for responsive design
         if (constraints.maxWidth > 800) {
           return const DesktopLayout();
         } else {

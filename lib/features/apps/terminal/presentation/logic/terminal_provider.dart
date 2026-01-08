@@ -12,7 +12,6 @@ class TerminalNotifier extends Notifier<List<String>> {
 
   // Simple state machine for interactive commands
   String? _awaitingInputFor;
-  Map<String, String> _tempData = {};
 
   void processCommand(String input) {
     // Echo the command
@@ -30,16 +29,23 @@ class TerminalNotifier extends Notifier<List<String>> {
         state = [
           ...state,
           'Available commands:',
+          '  help         - Show this help message',
           '  whoami       - About the developer',
+          '  about        - About me (alias)',
+          '  aboutme      - About me (alias)',
           '  projects     - View my work',
           '  socials      - Connect with me',
           '  contact      - Send a message',
+          '  contactme    - Send a message (alias)',
           '  clear        - Clear terminal',
           '  github       - Open GitHub',
           '  linkedin     - Open LinkedIn',
         ];
         break;
       case 'whoami':
+      case 'about':
+      case 'aboutme':
+      case 'about me':
         state = [
           ...state,
           '---------------------------------------------------',
@@ -53,6 +59,13 @@ class TerminalNotifier extends Notifier<List<String>> {
           '  • Mobile: Flutter, Dart',
           '  • Backend: Firebase, Node.js',
           '  • Languages: C++, Python, JavaScript',
+          '  • UI/UX: Responsive Design, Animations',
+          '  • Tools: Git, VS Code, Figma',
+          '',
+          'Interests:',
+          '  • Cross-platform development',
+          '  • Beautiful UI/UX design',
+          '  • Open source contribution',
           '---------------------------------------------------',
         ];
         break;
@@ -81,6 +94,8 @@ class TerminalNotifier extends Notifier<List<String>> {
         ];
         break;
       case 'contact':
+      case 'contactme':
+      case 'contact me':
         state = [...state, 'Opening email client...'];
         _launchEmail();
         break;
@@ -88,18 +103,20 @@ class TerminalNotifier extends Notifier<List<String>> {
         state = [];
         break;
       case 'mahnoor_2722':
-        state = [
-          ...state,
-          '<HEART> ❤️',
-          '<LOVE> I love you Mahnoor',
-        ];
+        state = [...state, '<HEART> ❤️', '<LOVE> I love you Mahnoor'];
         break;
       case 'sudo hire_me':
-        state = [...state, 'ACCESS GRANTED. INITIATING CELEBRATION PROTOCOL...'];
+        state = [
+          ...state,
+          'ACCESS GRANTED. INITIATING CELEBRATION PROTOCOL...',
+        ];
         // Trigger global celebration event here (TODO)
         break;
       default:
-        state = [...state, 'Command not found: $command. Type "help" for options.'];
+        state = [
+          ...state,
+          'Command not found: $command. Type "help" for options.',
+        ];
     }
   }
 
@@ -123,7 +140,11 @@ class TerminalNotifier extends Notifier<List<String>> {
     if (await canLaunchUrl(emailLaunchUri)) {
       await launchUrl(emailLaunchUri);
     } else {
-      state = [...state, 'Error: Could not launch email client.', 'Email: usernameistaken444@gmail.com'];
+      state = [
+        ...state,
+        'Error: Could not launch email client.',
+        'Email: usernameistaken444@gmail.com',
+      ];
     }
   }
 
