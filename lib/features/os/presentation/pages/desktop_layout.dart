@@ -305,16 +305,16 @@ class DesktopLayout extends ConsumerWidget {
       child: ListView(
         children: [
           _EducationItem(
-            degree: 'Bachelor of Computer Science',
-            institution: 'University of Engineering and Technology',
-            year: '2018 - 2022',
+            degree: 'Intermediate - ICS',
+            institution: 'Kips College',
+            year: '2021 - 2022',
             accentColor: accentColor,
           ),
           const SizedBox(height: 16),
           _EducationItem(
-            degree: 'Flutter Development Certification',
-            institution: 'Online Course',
-            year: '2022',
+            degree: 'Bachelor of Computer Science',
+            institution: 'University of Engineering and Technology',
+            year: '2024 - Present',
             accentColor: accentColor,
           ),
         ],
