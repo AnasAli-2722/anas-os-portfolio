@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:protfolio/core/theme/app_theme.dart';
 import '../logic/terminal_provider.dart';
+import '../../../../os/presentation/providers/wallpaper_provider.dart';
 
 class TerminalScreen extends ConsumerStatefulWidget {
   const TerminalScreen({super.key});
@@ -36,7 +36,8 @@ class _TerminalScreenState extends ConsumerState<TerminalScreen> {
   @override
   Widget build(BuildContext context) {
     final history = ref.watch(terminalProvider);
-    
+    final accentColor = ref.watch(accentColorProvider);
+
     // Auto-scroll on new history
     ref.listen(terminalProvider, (previous, next) {
       _scrollToBottom();
@@ -54,7 +55,7 @@ class _TerminalScreenState extends ConsumerState<TerminalScreen> {
               itemCount: history.length,
               itemBuilder: (context, index) {
                 final line = history[index];
-                
+
                 if (line.startsWith('<HEART>')) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8),
@@ -65,13 +66,14 @@ class _TerminalScreenState extends ConsumerState<TerminalScreen> {
                     ),
                   );
                 }
-                
+
                 if (line.startsWith('<LOVE>')) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16),
                     child: Text(
                       line.replaceAll('<LOVE> ', ''),
-                      style: GoogleFonts.dancingScript( // Romantic font
+                      style: GoogleFonts.dancingScript(
+                        // Romantic font
                         color: Colors.pinkAccent,
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
@@ -86,7 +88,9 @@ class _TerminalScreenState extends ConsumerState<TerminalScreen> {
                   child: Text(
                     line,
                     style: GoogleFonts.firaCode(
-                      color: line.startsWith('>') ? AppTheme.accent : Colors.greenAccent,
+                      color: line.startsWith('>')
+                          ? accentColor
+                          : Colors.greenAccent,
                       fontSize: 14,
                     ),
                   ),
@@ -100,7 +104,7 @@ class _TerminalScreenState extends ConsumerState<TerminalScreen> {
               Text(
                 '> ',
                 style: GoogleFonts.firaCode(
-                  color: AppTheme.accent,
+                  color: accentColor,
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:protfolio/core/theme/app_theme.dart';
 import 'package:protfolio/features/os/domain/models/window_model.dart';
 import 'package:protfolio/features/os/presentation/providers/window_provider.dart';
+import 'package:protfolio/features/os/presentation/providers/wallpaper_provider.dart';
 
 class GlassWindow extends ConsumerStatefulWidget {
   final WindowModel window;
@@ -20,6 +21,7 @@ class _GlassWindowState extends ConsumerState<GlassWindow> {
 
   @override
   Widget build(BuildContext context) {
+    final accentColor = ref.watch(accentColorProvider);
     final effectiveSize = _isResizing
         ? Size(
             widget.window.size.width + _localResizeSize.width,
@@ -40,7 +42,7 @@ class _GlassWindowState extends ConsumerState<GlassWindow> {
               height: effectiveSize.height,
               decoration: BoxDecoration(
                 color: AppTheme.surface.withOpacity(0.85),
-                border: Border.all(color: AppTheme.accent.withOpacity(0.3)),
+                border: Border.all(color: accentColor.withOpacity(0.3)),
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
@@ -79,7 +81,7 @@ class _GlassWindowState extends ConsumerState<GlassWindow> {
                       decoration: BoxDecoration(
                         border: Border(
                           bottom: BorderSide(
-                            color: AppTheme.accent.withOpacity(0.1),
+                            color: accentColor.withOpacity(0.1),
                           ),
                         ),
                         color: Colors.black.withOpacity(0.4),
@@ -94,7 +96,7 @@ class _GlassWindowState extends ConsumerState<GlassWindow> {
                             style: AppTheme.darkTheme.textTheme.bodyMedium
                                 ?.copyWith(
                                   fontWeight: FontWeight.bold,
-                                  color: AppTheme.accent,
+                                  color: accentColor,
                                 ),
                           ),
                           const Spacer(),
@@ -167,7 +169,7 @@ class _GlassWindowState extends ConsumerState<GlassWindow> {
                     width: 20,
                     height: 20,
                     decoration: BoxDecoration(
-                      color: AppTheme.accent.withOpacity(0.3),
+                      color: accentColor.withOpacity(0.3),
                       borderRadius: const BorderRadius.only(
                         bottomRight: Radius.circular(16),
                       ),
@@ -175,7 +177,7 @@ class _GlassWindowState extends ConsumerState<GlassWindow> {
                     child: Icon(
                       Icons.drag_handle,
                       size: 12,
-                      color: AppTheme.accent,
+                      color: accentColor,
                     ),
                   ),
                 ),

@@ -102,7 +102,7 @@ class DesktopLayout extends ConsumerWidget {
             ref,
             'experience',
             'Experience',
-            _buildExperienceContent(),
+            _buildExperienceContent(ref),
           ),
         ),
         _DesktopIcon(
@@ -110,21 +110,25 @@ class DesktopLayout extends ConsumerWidget {
           label: 'Skills',
           color: const Color(0xFF00FF87),
           onTap: () =>
-              _openWindow(ref, 'skills', 'Skills', _buildSkillsContent()),
+              _openWindow(ref, 'skills', 'Skills', _buildSkillsContent(ref)),
         ),
         _DesktopIcon(
           icon: FontAwesomeIcons.folderOpen,
           label: 'Projects',
           color: const Color(0xFFFF6B6B),
-          onTap: () =>
-              _openWindow(ref, 'projects', 'Projects', _buildProjectsContent()),
+          onTap: () => _openWindow(
+            ref,
+            'projects',
+            'Projects',
+            _buildProjectsContent(ref),
+          ),
         ),
         _DesktopIcon(
           icon: FontAwesomeIcons.user,
           label: 'About Me',
           color: const Color(0xFF9D4EDD),
           onTap: () =>
-              _openWindow(ref, 'about', 'About Me', _buildAboutContent()),
+              _openWindow(ref, 'about', 'About Me', _buildAboutContent(ref)),
         ),
         _DesktopIcon(
           icon: FontAwesomeIcons.graduationCap,
@@ -134,7 +138,7 @@ class DesktopLayout extends ConsumerWidget {
             ref,
             'education',
             'Education',
-            _buildEducationContent(),
+            _buildEducationContent(ref),
           ),
         ),
         _DesktopIcon(
@@ -172,7 +176,8 @@ class DesktopLayout extends ConsumerWidget {
     }
   }
 
-  Widget _buildExperienceContent() {
+  Widget _buildExperienceContent(WidgetRef ref) {
+    final accentColor = ref.watch(accentColorProvider);
     return Container(
       padding: const EdgeInsets.all(24),
       color: Colors.black.withOpacity(0.3),
@@ -183,6 +188,7 @@ class DesktopLayout extends ConsumerWidget {
             company: 'Tech Company',
             period: '2023 - Present',
             description: 'Leading mobile app development projects...',
+            accentColor: accentColor,
           ),
           const SizedBox(height: 16),
           _ExperienceItem(
@@ -190,30 +196,41 @@ class DesktopLayout extends ConsumerWidget {
             company: 'Startup Inc',
             period: '2021 - 2023',
             description: 'Developed cross-platform applications...',
+            accentColor: accentColor,
           ),
         ],
       ),
     );
   }
 
-  Widget _buildSkillsContent() {
+  Widget _buildSkillsContent(WidgetRef ref) {
+    final accentColor = ref.watch(accentColorProvider);
     return Container(
       padding: const EdgeInsets.all(24),
       color: Colors.black.withOpacity(0.3),
       child: ListView(
         children: [
-          _SkillBar(skill: 'Flutter', level: 0.9),
-          _SkillBar(skill: 'Dart', level: 0.85),
-          _SkillBar(skill: 'Firebase', level: 0.8),
-          _SkillBar(skill: 'UI/UX Design', level: 0.75),
-          _SkillBar(skill: 'State Management', level: 0.85),
-          _SkillBar(skill: 'REST APIs', level: 0.8),
+          _SkillBar(skill: 'Flutter', level: 0.9, accentColor: accentColor),
+          _SkillBar(skill: 'Dart', level: 0.85, accentColor: accentColor),
+          _SkillBar(skill: 'Firebase', level: 0.8, accentColor: accentColor),
+          _SkillBar(
+            skill: 'UI/UX Design',
+            level: 0.75,
+            accentColor: accentColor,
+          ),
+          _SkillBar(
+            skill: 'State Management',
+            level: 0.85,
+            accentColor: accentColor,
+          ),
+          _SkillBar(skill: 'REST APIs', level: 0.8, accentColor: accentColor),
         ],
       ),
     );
   }
 
-  Widget _buildProjectsContent() {
+  Widget _buildProjectsContent(WidgetRef ref) {
+    final accentColor = ref.watch(accentColorProvider);
     return Container(
       padding: const EdgeInsets.all(24),
       color: Colors.black.withOpacity(0.3),
@@ -222,16 +239,33 @@ class DesktopLayout extends ConsumerWidget {
         mainAxisSpacing: 16,
         crossAxisSpacing: 16,
         children: [
-          _ProjectCard(name: 'Portfolio OS', tech: 'Flutter'),
-          _ProjectCard(name: 'E-Commerce App', tech: 'Flutter + Firebase'),
-          _ProjectCard(name: 'Chat Application', tech: 'Flutter + WebSocket'),
-          _ProjectCard(name: 'Weather App', tech: 'Flutter + API'),
+          _ProjectCard(
+            name: 'Portfolio OS',
+            tech: 'Flutter',
+            accentColor: accentColor,
+          ),
+          _ProjectCard(
+            name: 'E-Commerce App',
+            tech: 'Flutter + Firebase',
+            accentColor: accentColor,
+          ),
+          _ProjectCard(
+            name: 'Chat Application',
+            tech: 'Flutter + WebSocket',
+            accentColor: accentColor,
+          ),
+          _ProjectCard(
+            name: 'Weather App',
+            tech: 'Flutter + API',
+            accentColor: accentColor,
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildAboutContent() {
+  Widget _buildAboutContent(WidgetRef ref) {
+    final accentColor = ref.watch(accentColorProvider);
     return Container(
       padding: const EdgeInsets.all(24),
       color: Colors.black.withOpacity(0.3),
@@ -239,10 +273,10 @@ class DesktopLayout extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CircleAvatar(
+            CircleAvatar(
               radius: 50,
-              backgroundColor: AppTheme.accent,
-              child: Icon(Icons.person, size: 50, color: Colors.white),
+              backgroundColor: accentColor,
+              child: const Icon(Icons.person, size: 50, color: Colors.white),
             ),
             const SizedBox(height: 20),
             Text('Anas Ali', style: AppTheme.darkTheme.textTheme.displayMedium),
@@ -263,7 +297,8 @@ class DesktopLayout extends ConsumerWidget {
     );
   }
 
-  Widget _buildEducationContent() {
+  Widget _buildEducationContent(WidgetRef ref) {
+    final accentColor = ref.watch(accentColorProvider);
     return Container(
       padding: const EdgeInsets.all(24),
       color: Colors.black.withOpacity(0.3),
@@ -273,12 +308,14 @@ class DesktopLayout extends ConsumerWidget {
             degree: 'Bachelor of Computer Science',
             institution: 'University of Engineering and Technology',
             year: '2018 - 2022',
+            accentColor: accentColor,
           ),
           const SizedBox(height: 16),
           _EducationItem(
             degree: 'Flutter Development Certification',
             institution: 'Online Course',
             year: '2022',
+            accentColor: accentColor,
           ),
         ],
       ),
@@ -410,11 +447,13 @@ class _ExperienceItem extends StatelessWidget {
   final String company;
   final String period;
   final String description;
+  final Color accentColor;
 
   const _ExperienceItem({
     required this.title,
     required this.company,
     required this.period,
+    required this.accentColor,
     required this.description,
   });
 
@@ -425,7 +464,7 @@ class _ExperienceItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.05),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppTheme.accent.withOpacity(0.3)),
+        border: Border.all(color: accentColor.withOpacity(0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -457,8 +496,13 @@ class _ExperienceItem extends StatelessWidget {
 class _SkillBar extends StatelessWidget {
   final String skill;
   final double level;
+  final Color accentColor;
 
-  const _SkillBar({required this.skill, required this.level});
+  const _SkillBar({
+    required this.skill,
+    required this.level,
+    required this.accentColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -475,7 +519,7 @@ class _SkillBar extends StatelessWidget {
               value: level,
               minHeight: 8,
               backgroundColor: Colors.white.withOpacity(0.1),
-              valueColor: const AlwaysStoppedAnimation<Color>(AppTheme.accent),
+              valueColor: AlwaysStoppedAnimation<Color>(accentColor),
             ),
           ),
         ],
@@ -487,8 +531,13 @@ class _SkillBar extends StatelessWidget {
 class _ProjectCard extends StatelessWidget {
   final String name;
   final String tech;
+  final Color accentColor;
 
-  const _ProjectCard({required this.name, required this.tech});
+  const _ProjectCard({
+    required this.name,
+    required this.tech,
+    required this.accentColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -497,12 +546,12 @@ class _ProjectCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.05),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppTheme.accent.withOpacity(0.3)),
+        border: Border.all(color: accentColor.withOpacity(0.3)),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Icon(Icons.folder, size: 40, color: AppTheme.accent),
+          Icon(Icons.folder, size: 40, color: accentColor),
           const SizedBox(height: 12),
           Text(
             name,
@@ -526,11 +575,13 @@ class _EducationItem extends StatelessWidget {
   final String degree;
   final String institution;
   final String year;
+  final Color accentColor;
 
   const _EducationItem({
     required this.degree,
     required this.institution,
     required this.year,
+    required this.accentColor,
   });
 
   @override
@@ -540,7 +591,7 @@ class _EducationItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.05),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppTheme.accent.withOpacity(0.3)),
+        border: Border.all(color: accentColor.withOpacity(0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

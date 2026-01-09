@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:protfolio/core/theme/app_theme.dart';
 import '../../domain/models/window_model.dart';
 import '../providers/window_provider.dart';
+import '../providers/wallpaper_provider.dart';
 import '../../../apps/terminal/presentation/pages/terminal_screen.dart';
 import '../../../apps/store/presentation/pages/store_screen.dart';
 import '../../../apps/monitor/presentation/pages/monitor_screen.dart';
@@ -17,6 +18,8 @@ class Taskbar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final accentColor = ref.watch(accentColorProvider);
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(20),
       child: BackdropFilter(
@@ -26,7 +29,7 @@ class Taskbar extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           decoration: BoxDecoration(
             color: Colors.black.withOpacity(0.5),
-            border: Border.all(color: AppTheme.accent.withOpacity(0.3)),
+            border: Border.all(color: accentColor.withOpacity(0.3)),
             borderRadius: BorderRadius.circular(20),
           ),
           child: Row(
@@ -171,7 +174,7 @@ class Taskbar extends ConsumerWidget {
   }
 }
 
-class _TaskbarIcon extends StatefulWidget {
+class _TaskbarIcon extends ConsumerStatefulWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
@@ -185,14 +188,15 @@ class _TaskbarIcon extends StatefulWidget {
   });
 
   @override
-  State<_TaskbarIcon> createState() => _TaskbarIconState();
+  ConsumerState<_TaskbarIcon> createState() => _TaskbarIconState();
 }
 
-class _TaskbarIconState extends State<_TaskbarIcon> {
+class _TaskbarIconState extends ConsumerState<_TaskbarIcon> {
   bool _isHovered = false;
 
   @override
   Widget build(BuildContext context) {
+    final accentColor = ref.watch(accentColorProvider);
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
@@ -203,11 +207,11 @@ class _TaskbarIconState extends State<_TaskbarIcon> {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: _isHovered
-                ? (widget.color ?? AppTheme.accent).withOpacity(0.2)
+                ? (widget.color ?? accentColor).withOpacity(0.2)
                 : Colors.transparent,
             borderRadius: BorderRadius.circular(12),
             border: _isHovered
-                ? Border.all(color: widget.color ?? AppTheme.accent)
+                ? Border.all(color: widget.color ?? accentColor)
                 : Border.all(color: Colors.transparent),
           ),
           child: Column(
@@ -216,7 +220,7 @@ class _TaskbarIconState extends State<_TaskbarIcon> {
               Icon(
                 widget.icon,
                 color: _isHovered
-                    ? (widget.color ?? AppTheme.accent)
+                    ? (widget.color ?? accentColor)
                     : Colors.white,
                 size: 24,
               ),
