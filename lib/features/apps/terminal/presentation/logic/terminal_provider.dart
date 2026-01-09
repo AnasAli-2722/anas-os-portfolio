@@ -102,9 +102,6 @@ class TerminalNotifier extends Notifier<List<String>> {
       case 'clear':
         state = [];
         break;
-      case 'mahnoor_2722':
-        state = [...state, '<HEART> ❤️', '<LOVE> I love you Mahnoor'];
-        break;
       case 'sudo hire_me':
         state = [
           ...state,
