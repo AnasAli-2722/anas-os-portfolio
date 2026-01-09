@@ -31,12 +31,10 @@ class TerminalNotifier extends Notifier<List<String>> {
           'Available commands:',
           '  help         - Show this help message',
           '  whoami       - About the developer',
-          '  about        - About me (alias)',
-          '  aboutme      - About me (alias)',
+          '  about        - About me',
           '  projects     - View my work',
           '  socials      - Connect with me',
           '  contact      - Send a message',
-          '  contactme    - Send a message (alias)',
           '  clear        - Clear terminal',
           '  github       - Open GitHub',
           '  linkedin     - Open LinkedIn',
@@ -44,8 +42,6 @@ class TerminalNotifier extends Notifier<List<String>> {
         break;
       case 'whoami':
       case 'about':
-      case 'aboutme':
-      case 'about me':
         state = [
           ...state,
           '---------------------------------------------------',
@@ -79,10 +75,10 @@ class TerminalNotifier extends Notifier<List<String>> {
         ];
         break;
       case 'github':
-        _launchUrl('https://github.com/AnasAli-Dev'); // Placeholder
+        _launchUrl('https://github.com/AnasAli-2722');
         break;
       case 'linkedin':
-        _launchUrl('https://linkedin.com/in/anas-ali-dev'); // Placeholder
+        _launchUrl('https://www.linkedin.com/in/anas-ali-dev');
         break;
       case 'projects':
         state = [
@@ -94,8 +90,6 @@ class TerminalNotifier extends Notifier<List<String>> {
         ];
         break;
       case 'contact':
-      case 'contactme':
-      case 'contact me':
         state = [...state, 'Opening email client...'];
         _launchEmail();
         break;
@@ -130,7 +124,7 @@ class TerminalNotifier extends Notifier<List<String>> {
   Future<void> _launchEmail() async {
     final Uri emailLaunchUri = Uri(
       scheme: 'mailto',
-      path: 'usernameistaken444@gmail.com',
+      path: '24-cs-83@students.uettaxila.edu.pk',
       query: 'subject=Portfolio Inquiry&body=Hi Muhammad Anas Ali,',
     );
 

@@ -72,25 +72,25 @@ class DesktopLayout extends ConsumerWidget {
           icon: FontAwesomeIcons.github,
           label: 'GitHub',
           color: Colors.white,
-          onTap: () => _launchURL('https://github.com/yourusername'),
+          onTap: () => _launchURL('https://github.com/AnasAli-2722'),
         ),
         _DesktopIcon(
           icon: FontAwesomeIcons.linkedin,
           label: 'LinkedIn',
           color: const Color(0xFF0077B5),
-          onTap: () => _launchURL('https://linkedin.com/in/yourusername'),
+          onTap: () => _launchURL('https://www.linkedin.com/in/anas-ali-dev'),
         ),
         _DesktopIcon(
           icon: FontAwesomeIcons.instagram,
           label: 'Instagram',
           color: const Color(0xFFE1306C),
-          onTap: () => _launchURL('https://instagram.com/yourusername'),
+          onTap: () => _launchURL('https://www.instagram.com/anasthatic_'),
         ),
         _DesktopIcon(
           icon: FontAwesomeIcons.envelope,
           label: 'Email',
           color: const Color(0xFFEA4335),
-          onTap: () => _launchURL('mailto:your.email@example.com'),
+          onTap: () => _launchURL('mailto:24-cs-83@students.uettaxila.edu.pk'),
         ),
 
         // Applications

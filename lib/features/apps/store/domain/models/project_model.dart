@@ -2,7 +2,7 @@ class ProjectModel {
   final String id;
   final String name;
   final String description;
-  final String iconUrl; // Placeholder asset path or URL
+  final String iconUrl;
   final List<String> techStack;
   final String? liveUrl;
   bool isInstalled;

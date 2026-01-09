@@ -37,21 +37,24 @@ class Taskbar extends ConsumerWidget {
                 icon: FontAwesomeIcons.instagram,
                 label: 'Instagram',
                 color: const Color(0xFFE1306C),
-                onTap: () => _launchURL('https://instagram.com/yourusername'),
+                onTap: () =>
+                    _launchURL('https://www.instagram.com/anasthatic_'),
               ),
               const SizedBox(width: 12),
               _TaskbarIcon(
                 icon: FontAwesomeIcons.linkedin,
                 label: 'LinkedIn',
                 color: const Color(0xFF0077B5),
-                onTap: () => _launchURL('https://linkedin.com/in/yourusername'),
+                onTap: () =>
+                    _launchURL('https://www.linkedin.com/in/anas-ali-dev'),
               ),
               const SizedBox(width: 12),
               _TaskbarIcon(
                 icon: FontAwesomeIcons.envelope,
                 label: 'Email',
                 color: const Color(0xFFEA4335),
-                onTap: () => _launchURL('mailto:your.email@example.com'),
+                onTap: () =>
+                    _launchURL('mailto:24-cs-83@students.uettaxila.edu.pk'),
               ),
               const SizedBox(width: 12),
               _TaskbarIcon(
