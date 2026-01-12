@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Future<void> _simulateLoading() async {
-    // Simulate resource loading
+
     for (int i = 0; i <= 100; i++) {
       await Future.delayed(const Duration(milliseconds: 20));
       if (mounted) {
@@ -38,7 +38,6 @@ class _SplashScreenState extends State<SplashScreen>
       }
     }
 
-    // Navigate to OS Layout
     if (mounted) {
       await Future.delayed(const Duration(milliseconds: 500));
       Navigator.of(context).pushReplacement(
@@ -77,7 +76,7 @@ class _SplashScreenState extends State<SplashScreen>
         ),
         child: Stack(
           children: [
-            // Animated background particles
+
             ...List.generate(20, (index) {
               return Positioned(
                 left: (index * 100) % MediaQuery.of(context).size.width,
@@ -97,12 +96,11 @@ class _SplashScreenState extends State<SplashScreen>
               );
             }),
 
-            // Main content
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Logo/Name
+
                   Text(
                         'ANAS ALI',
                         style: GoogleFonts.orbitron(
@@ -118,7 +116,6 @@ class _SplashScreenState extends State<SplashScreen>
 
                   SizedBox(height: 16.h),
 
-                  // Subtitle
                   Text(
                         'PORTFOLIO OS',
                         style: GoogleFonts.sourceCodePro(
@@ -133,7 +130,6 @@ class _SplashScreenState extends State<SplashScreen>
 
                   SizedBox(height: 80.h),
 
-                  // Loading bar
                   SizedBox(
                         width: 300.w,
                         child: Column(
@@ -167,7 +163,6 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             ),
 
-            // Version info at bottom
             Positioned(
               bottom: 40.h,
               left: 0,
@@ -188,3 +183,4 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 }
+

@@ -20,10 +20,9 @@ class MobileLayout extends ConsumerWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // Wallpaper
+
           Positioned.fill(child: _buildWallpaper(wallpaper)),
 
-          // Content
           SafeArea(
             child: Column(
               children: [
@@ -38,7 +37,7 @@ class MobileLayout extends ConsumerWidget {
                     mainAxisSpacing: 20,
                     crossAxisSpacing: 20,
                     children: [
-                      // Social Links
+
                       _MobileAppIcon(
                         icon: FontAwesomeIcons.github,
                         label: 'GitHub',
@@ -74,7 +73,6 @@ class MobileLayout extends ConsumerWidget {
                         onTap: () => _launchURL('https://yourwebsite.com'),
                       ),
 
-                      // Applications
                       _MobileAppIcon(
                         icon: FontAwesomeIcons.briefcase,
                         label: 'Experience',
@@ -427,7 +425,6 @@ class _MobileAppIcon extends StatelessWidget {
   }
 }
 
-// Content Widget Classes
 class _ExperienceItem extends StatelessWidget {
   final String title;
   final String company;
@@ -588,3 +585,4 @@ class _EducationItem extends StatelessWidget {
     );
   }
 }
+

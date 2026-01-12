@@ -5,7 +5,7 @@ import '../domain/models/desktop_icon.dart';
 class DesktopIconsData {
   static List<DesktopIcon> getIcons() {
     return [
-      // Social Links
+
       DesktopIcon(
         id: 'github',
         label: 'GitHub',
@@ -47,7 +47,6 @@ class DesktopIconsData {
         url: 'https://yourwebsite.com',
       ),
 
-      // Main Applications
       DesktopIcon(
         id: 'experience',
         label: 'Experience',
@@ -86,3 +85,4 @@ class DesktopIconsData {
     ];
   }
 }
+

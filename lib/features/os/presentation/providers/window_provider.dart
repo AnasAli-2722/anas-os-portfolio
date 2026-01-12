@@ -68,3 +68,4 @@ class WindowNotifier extends Notifier<List<WindowModel>> {
 final windowProvider = NotifierProvider<WindowNotifier, List<WindowModel>>(() {
   return WindowNotifier();
 });
+

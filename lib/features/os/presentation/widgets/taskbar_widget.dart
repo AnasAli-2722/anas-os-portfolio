@@ -34,7 +34,7 @@ class TaskbarWidget extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Row(
           children: [
-            // Start Button
+
             _TaskbarButton(
               icon: FontAwesomeIcons.gripVertical,
               label: 'Apps',
@@ -43,7 +43,6 @@ class TaskbarWidget extends StatelessWidget {
 
             const Spacer(),
 
-            // System Tray
             Row(
               children: [
                 Icon(FontAwesomeIcons.wifi, size: 16.sp, color: Colors.white70),
@@ -123,3 +122,4 @@ class _TaskbarButtonState extends State<_TaskbarButton> {
     );
   }
 }
+

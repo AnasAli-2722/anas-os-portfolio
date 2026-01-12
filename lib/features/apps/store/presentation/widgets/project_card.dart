@@ -18,14 +18,14 @@ class _ProjectCardState extends State<ProjectCard> {
     if (widget.project.isInstalled) return;
 
     setState(() => _isInstalling = true);
-    // Simulate download
+
     await Future.delayed(const Duration(seconds: 2));
     if (mounted) {
       setState(() {
         _isInstalling = false;
         widget.project.isInstalled = true;
       });
-      // TODO: Add to desktop/taskbar via provider
+
     }
   }
 
@@ -85,3 +85,4 @@ class _ProjectCardState extends State<ProjectCard> {
     );
   }
 }
+

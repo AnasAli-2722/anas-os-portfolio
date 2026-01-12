@@ -10,11 +10,10 @@ class TerminalNotifier extends Notifier<List<String>> {
     ];
   }
 
-  // Simple state machine for interactive commands
   String? _awaitingInputFor;
 
   void processCommand(String input) {
-    // Echo the command
+
     state = [...state, '> $input'];
 
     if (_awaitingInputFor != null) {
@@ -101,7 +100,7 @@ class TerminalNotifier extends Notifier<List<String>> {
           ...state,
           'ACCESS GRANTED. INITIATING CELEBRATION PROTOCOL...',
         ];
-        // Trigger global celebration event here (TODO)
+
         break;
       default:
         state = [
@@ -140,10 +139,11 @@ class TerminalNotifier extends Notifier<List<String>> {
   }
 
   void _handleInteractiveInput(String input) {
-    // Legacy interactive input removed in favor of direct mailto
+
   }
 }
 
 final terminalProvider = NotifierProvider<TerminalNotifier, List<String>>(() {
   return TerminalNotifier();
 });
+

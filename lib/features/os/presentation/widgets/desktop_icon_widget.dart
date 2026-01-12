@@ -47,7 +47,7 @@ class _DesktopIconWidgetState extends State<DesktopIconWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Icon Container with glassmorphism effect
+
               Container(
                     width: iconSize * 1.8,
                     height: iconSize * 1.8,
@@ -102,7 +102,6 @@ class _DesktopIconWidgetState extends State<DesktopIconWidget> {
 
               SizedBox(height: 8.h),
 
-              // Label with shadow for better readability
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
                 decoration: _isHovered
@@ -139,3 +138,4 @@ class _DesktopIconWidgetState extends State<DesktopIconWidget> {
     );
   }
 }
+

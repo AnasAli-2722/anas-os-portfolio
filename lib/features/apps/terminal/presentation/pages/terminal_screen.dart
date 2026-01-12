@@ -19,7 +19,7 @@ class _TerminalScreenState extends ConsumerState<TerminalScreen> {
   @override
   void initState() {
     super.initState();
-    // Auto-focus the input
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _focusNode.requestFocus();
     });
@@ -38,7 +38,6 @@ class _TerminalScreenState extends ConsumerState<TerminalScreen> {
     final history = ref.watch(terminalProvider);
     final accentColor = ref.watch(accentColorProvider);
 
-    // Auto-scroll on new history
     ref.listen(terminalProvider, (previous, next) {
       _scrollToBottom();
     });
@@ -73,7 +72,7 @@ class _TerminalScreenState extends ConsumerState<TerminalScreen> {
                     child: Text(
                       line.replaceAll('<LOVE> ', ''),
                       style: GoogleFonts.dancingScript(
-                        // Romantic font
+
                         color: Colors.pinkAccent,
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
@@ -137,3 +136,4 @@ class _TerminalScreenState extends ConsumerState<TerminalScreen> {
     );
   }
 }
+

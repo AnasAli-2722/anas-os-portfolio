@@ -21,7 +21,7 @@ class WallpaperWidget extends ConsumerWidget {
       ),
       child: Stack(
         children: [
-          // Animated gradient overlay
+
           Positioned.fill(
             child:
                 Container(
@@ -43,7 +43,6 @@ class WallpaperWidget extends ConsumerWidget {
                     .fadeOut(duration: 3000.ms),
           ),
 
-          // Grid pattern overlay
           CustomPaint(painter: GridPainter(), child: Container()),
         ],
       ),
@@ -72,3 +71,4 @@ class GridPainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
+

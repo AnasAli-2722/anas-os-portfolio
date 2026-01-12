@@ -17,3 +17,4 @@ class ProjectModel {
     this.isInstalled = false,
   });
 }
+

@@ -12,7 +12,7 @@ class MonitorScreen extends StatelessWidget {
       color: const Color(0xFF111111),
       child: Column(
         children: [
-          // Header / Graphs
+
           Container(
             height: 150,
             padding: const EdgeInsets.all(16),
@@ -43,10 +43,11 @@ class MonitorScreen extends StatelessWidget {
               ],
             ),
           ),
-          // Process List
+
           Expanded(child: const ProcessList()),
         ],
       ),
     );
   }
 }
+

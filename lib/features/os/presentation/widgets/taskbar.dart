@@ -35,7 +35,7 @@ class Taskbar extends ConsumerWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Social Links Section
+
               _TaskbarIcon(
                 icon: FontAwesomeIcons.instagram,
                 label: 'Instagram',
@@ -74,7 +74,6 @@ class Taskbar extends ConsumerWidget {
               ),
               const SizedBox(width: 16),
 
-              // App Icons
               _TaskbarIcon(
                 icon: Icons.terminal,
                 label: 'Terminal',
@@ -231,3 +230,4 @@ class _TaskbarIconState extends ConsumerState<_TaskbarIcon> {
     );
   }
 }
+

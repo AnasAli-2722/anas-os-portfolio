@@ -50,9 +50,9 @@ class _WallpaperOption extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
       onTap: () {
-        // We are using a simple string to represent the "type" of wallpaper for now, 
-        // since we are using gradients/colors in DesktopLayout.
-        // Let's map labels to IDs.
+
+
+
         String wallpaperId = 'default';
         if (label == 'Deep Space') wallpaperId = 'deep_space';
         if (label == 'Cyber Red') wallpaperId = 'cyber_red';
@@ -80,3 +80,4 @@ class _WallpaperOption extends ConsumerWidget {
     );
   }
 }
+

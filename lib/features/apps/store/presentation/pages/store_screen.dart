@@ -11,7 +11,7 @@ class StoreScreen extends StatefulWidget {
 }
 
 class _StoreScreenState extends State<StoreScreen> {
-  // Mock Data
+
   final List<ProjectModel> projects = [
     ProjectModel(
       id: '1',
@@ -71,3 +71,4 @@ class _StoreScreenState extends State<StoreScreen> {
     );
   }
 }
+

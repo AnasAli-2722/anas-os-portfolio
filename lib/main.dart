@@ -6,13 +6,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/theme/app_theme.dart';
 import 'features/splash/presentation/pages/splash_screen.dart';
 import 'features/os/presentation/providers/wallpaper_provider.dart';
-// import 'package:firebase_core/firebase_core.dart';
-// import 'firebase_options.dart'; // Uncomment when firebase_options.dart is available
+
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Set system UI overlay style
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -20,13 +19,11 @@ void main() async {
     ),
   );
 
-  // Initialize services
   final prefs = await SharedPreferences.getInstance();
 
-  // Uncomment when Firebase is configured
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+
+
+
 
   runApp(
     ProviderScope(
@@ -42,7 +39,7 @@ class PortfolioOS extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(1920, 1080), // Desktop design size
+      designSize: const Size(1920, 1080),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
@@ -56,3 +53,4 @@ class PortfolioOS extends StatelessWidget {
     );
   }
 }
+

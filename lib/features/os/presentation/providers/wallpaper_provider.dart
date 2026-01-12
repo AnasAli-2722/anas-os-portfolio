@@ -26,7 +26,6 @@ final wallpaperProvider = NotifierProvider<WallpaperNotifier, String>(() {
   return WallpaperNotifier();
 });
 
-// Dynamic accent color provider based on wallpaper
 final accentColorProvider = Provider<Color>((ref) {
   final wallpaper = ref.watch(wallpaperProvider);
 
@@ -45,6 +44,7 @@ final accentColorProvider = Provider<Color>((ref) {
       return const Color(0xFFFF99CC);
     case 'deep_space':
     default:
-      return const Color(0xFFFF00FF); // Original pink/magenta
+      return const Color(0xFFFF00FF);
   }
 });
+

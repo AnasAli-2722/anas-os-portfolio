@@ -54,7 +54,7 @@ class _GlassWindowState extends ConsumerState<GlassWindow> {
               ),
               child: Column(
                 children: [
-                  // Title Bar with drag functionality
+
                   GestureDetector(
                     onPanStart: (_) {
                       ref
@@ -118,12 +118,12 @@ class _GlassWindowState extends ConsumerState<GlassWindow> {
                       ),
                     ),
                   ),
-                  // Content
+
                   Expanded(child: widget.window.content),
                 ],
               ),
             ),
-            // Resize Handle (bottom-right corner)
+
             Positioned(
               right: 0,
               bottom: 0,
@@ -212,3 +212,4 @@ class _WindowControl extends StatelessWidget {
     );
   }
 }
+

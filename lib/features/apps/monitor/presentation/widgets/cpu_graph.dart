@@ -18,13 +18,13 @@ class _CpuGraphState extends State<CpuGraph> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(const Duration(milliseconds: 200), (timer) { // Faster updates
+    _timer = Timer.periodic(const Duration(milliseconds: 200), (timer) {
       if (mounted) {
         setState(() {
           _dataPoints.removeAt(0);
-          // Generate a value between 0.2 and 0.8 to keep it centered but moving
+
           double newValue = 0.2 + (_random.nextDouble() * 0.6);
-          // Add some noise based on previous value to make it look like a real graph
+
           double prevValue = _dataPoints.last;
           newValue = (prevValue + newValue) / 2; 
           _dataPoints.add(newValue);
@@ -62,13 +62,13 @@ class _GraphPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     final path = Path();
-    // Ensure we have enough width per point
+
     final stepX = size.width / (data.length - 1);
 
     for (int i = 0; i < data.length; i++) {
       final x = i * stepX;
-      // Invert Y so 1.0 is at top (0) and 0.0 is at bottom (height)
-      // Add a clamp to ensure it stays within bounds
+
+
       final value = data[i].clamp(0.0, 1.0);
       final y = size.height - (value * size.height);
       
@@ -81,7 +81,6 @@ class _GraphPainter extends CustomPainter {
 
     canvas.drawPath(path, paint);
 
-    // Fill below
     final fillPaint = Paint()
       ..color = color.withOpacity(0.2)
       ..style = PaintingStyle.fill;
@@ -94,6 +93,7 @@ class _GraphPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _GraphPainter oldDelegate) {
-    return true; // Always repaint when data changes
+    return true;
   }
 }
+

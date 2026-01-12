@@ -22,10 +22,9 @@ class DesktopLayout extends ConsumerWidget {
       backgroundColor: AppTheme.background,
       body: Stack(
         children: [
-          // Background Wallpaper
+
           Positioned.fill(child: _buildWallpaper(wallpaper)),
 
-          // Desktop Icons
           Positioned.fill(
             child: SafeArea(
               child: Padding(
@@ -35,7 +34,6 @@ class DesktopLayout extends ConsumerWidget {
             ),
           ),
 
-          // Windows Stack
           ...windows.map((window) {
             return Positioned(
               key: ValueKey(window.id),
@@ -48,7 +46,6 @@ class DesktopLayout extends ConsumerWidget {
             );
           }),
 
-          // Taskbar
           const Positioned(
             bottom: 20,
             left: 0,
@@ -67,7 +64,7 @@ class DesktopLayout extends ConsumerWidget {
       crossAxisSpacing: 40,
       childAspectRatio: 0.8,
       children: [
-        // Social Links
+
         _DesktopIcon(
           icon: FontAwesomeIcons.github,
           label: 'GitHub',
@@ -93,7 +90,6 @@ class DesktopLayout extends ConsumerWidget {
           onTap: () => _launchURL('mailto:24-cs-83@students.uettaxila.edu.pk'),
         ),
 
-        // Applications
         _DesktopIcon(
           icon: FontAwesomeIcons.briefcase,
           label: 'Experience',
@@ -616,3 +612,4 @@ class _EducationItem extends StatelessWidget {
     );
   }
 }
+
